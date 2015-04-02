@@ -1,3 +1,8 @@
 body {
-  padding-top: 70px;  /* Move body of page below navbar. */
+}
+.header{
+  background-image: url("../images/digits.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 200px;
 }

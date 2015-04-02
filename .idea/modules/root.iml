@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id="root" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="CheckStyle-IDEA-Module">
+    <option name="configuration">
+      <map>
+        <entry key="active-configuration" value="HTTP_URL:http://philipmjohnson.github.io/ics613s15/morea/coding-standards/checkstyle.xml:ICS-SE" />
+      </map>
+    </option>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/../../target/scala-2.11/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.11/test-classes" />
@@ -13,12 +20,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/test" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../test/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/src_managed" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/native_libraries" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/test-reports" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/web" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
