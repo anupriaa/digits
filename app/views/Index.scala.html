@@ -1,4 +1,4 @@
-@(message: String)
+@(contact : List[Contact])
 
 @Main("Home") {
   <div class="container">
@@ -9,8 +9,9 @@
         <th>Last</th>
         <th>Phone</th>
       </tr>
-      <tr><td>Bharat</td><td>Sinha</td><td>808-789-9632</td></tr>
-      <tr><td>Anupriya</td><td>Srivastava</td><td>808-789-9632</td></tr>
+      @for(contact <- contact) {
+        <tr><td>@contact.getFirstName()</td> <td>@contact.getLastName()</td> <td>@contact.getTelephone</td></tr>
+      }
     </table>
   </div>
 }
