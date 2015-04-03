@@ -22,17 +22,25 @@ public class Contact {
   }
 
   /**
-   * 
-   * @return
+   * Returns the first name.
+   * @return the first name.
    */
   public String getFirstName() {
     return firstName;
   }
 
+  /**
+   * Returns the first name.
+   * @return the first name.
+   */
   public String getLastName() {
     return lastName;
   }
 
+  /**
+   * Returns the first name.
+   * @return the first name.
+   */
   public String getTelephone() {
     return telephone;
   }
