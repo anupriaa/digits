@@ -7,6 +7,7 @@ public class Contact {
   private String firstName;
   private String lastName;
   private String telephone;
+  private long id;
 
   /**
    * Creates an instance of Contact.
@@ -14,10 +15,11 @@ public class Contact {
    * @param lastName the last name.
    * @param telephone the telephone number.
    */
-  public Contact(String firstName, String lastName, String telephone) {
+  public Contact(long id, String firstName, String lastName, String telephone) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
+    this.id = id;
   }
 
   /**
@@ -42,5 +44,12 @@ public class Contact {
    */
   public String getTelephone() {
     return telephone;
+  }
+  /**
+   * Returns the id.
+   * @return the id.
+   */
+  public long getId() {
+    return id;
   }
 }

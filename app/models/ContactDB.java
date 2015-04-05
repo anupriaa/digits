@@ -3,29 +3,45 @@ package models;
 import views.formdata.ContactFormData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Mock-up in-memory repository for Contacts.
  */
 public class ContactDB {
 
-  private static List<Contact> contacts = new ArrayList<>();
+  private static Map<Long, Contact> contacts = new HashMap<>();
+  private static long currentId =1;
 
   /**
    * Creates a Contact instance and adds it to an internal data structure.
    * @param formData the form data.
    */
   public static void addContact(ContactFormData formData) {
-    Contact contact = new Contact(formData.firstName, formData.lastName, formData.telephone);
-    contacts.add(contact);
+    long idVal = (formData.id == 0) ? currentId++ : formData.id;
+    Contact contact = new Contact(idVal, formData.firstName, formData.lastName, formData.telephone);
+    contacts.put(idVal, contact);
   }
 
+  /**
+   * Returns the contact associated with the id if it exists  else throws a runtimeexception().
+   * @param id the id.
+   * @return the contact.
+   */
+  public static Contact getContact(long id) {
+    Contact contact = contacts.get(id);
+    if (contact == null) {
+      throw new RuntimeException("Could not find the contact associated with the id.");
+    }
+    return contact;
+  }
   /**
    * Returns the contact list.
    * @return the contact list.
    */
   public  static List<Contact> getContacts() {
-    return contacts;
+    return new ArrayList<>(contacts.values());
   }
 }
