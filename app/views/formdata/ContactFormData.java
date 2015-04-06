@@ -41,6 +41,22 @@ public class ContactFormData {
     this.id = contact.getId();
     this.telephoneType = contact.getTelephoneType();
   }
+
+  /**
+   * Adds contacts on startup.
+   * @param firstName the first name.
+   * @param lastName the last name.
+   * @param telephone the telephone number.
+   * @param telephoneType the telephone type.
+   */
+
+  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.telephone = telephone;
+    this.telephoneType = telephoneType;
+  }
+
   /**
    * Checks if the form fields are valid. Called bu bindRequestForm().
    * @return null if no errors else ist of errors.
