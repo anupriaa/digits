@@ -8,10 +8,14 @@
         <th>First</th>
         <th>Last</th>
         <th>Phone</th>
+        <th>Type</th>
       </tr>
       @for(contact <- contact) {
         <tr>
-          <td>@contact.getFirstName()</td> <td>@contact.getLastName()</td> <td>@contact.getTelephone</td>
+          <td>@contact.getFirstName()</td>
+          <td>@contact.getLastName()</td>
+          <td>@contact.getTelephone()</td>
+          <td>@contact.getTelephoneType()</td>
           <td><a href="@routes.Application.newContact(contact.getId)">Edit</a> </td>
         </tr>
       }
