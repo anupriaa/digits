@@ -22,15 +22,10 @@
             placeholder = "Last Name",
             help = "")
 
-      @text(contactForm("telephone"),
-            label = "Digits",
-            placeholder = "789-789-7896",
-            help = "")
-      @bootstrap3.select(contactForm("telephoneType"),
-            label = "telephoneType",
+      @telephone(contactForm("telephone"),
+            contactForm("telephoneType"),
             optionMap = telephoneTypeMap ,
-            isMultiple = false,
-            help = "")
+            isMultiple = false )
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
