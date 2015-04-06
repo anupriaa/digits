@@ -50,9 +50,10 @@ public class IntegrationTest {
             String firstName = "Anu";
             String lastName = "Sinha";
             String telephone = "812-789-78965";
-            contactPage.createContact(firstName, lastName, telephone);
+            String telephoneType = "Work";
+            contactPage.createContact(firstName, lastName, telephone, telephoneType);
             browser.goTo(indexPage);
-            indexPage.hasContact(firstName, lastName, telephone);
+            indexPage.hasContact(firstName, lastName, telephone, telephoneType);
           }
         });
   }

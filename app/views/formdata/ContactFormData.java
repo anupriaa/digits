@@ -20,6 +20,8 @@ public class ContactFormData {
    public String telephone = "";
   /** Long to hold id. */
   public long id;
+  /** String to hold telephone type. */
+  public String telephoneType = "";
 
   /**
    * No-arg constructor required by play.
@@ -37,6 +39,7 @@ public class ContactFormData {
     this.lastName = contact.getLastName();
     this.telephone = contact.getTelephone();
     this.id = contact.getId();
+    this.telephoneType = contact.getTelephoneType();
   }
   /**
    * Checks if the form fields are valid. Called bu bindRequestForm().
@@ -57,6 +60,9 @@ public class ContactFormData {
     if
         (telephone.length() != TELEPHONE_LEN) {
       errors.add(new ValidationError("telephone", "Telephone Number should be xxx-xxx-xxxx"));
+    }
+    if (!TelephoneTypes.isType(telephoneType)) {
+      errors.add(new ValidationError("telephoneType", "Telephone type is invalid."));
     }
     return errors.isEmpty() ? null : errors;
   }

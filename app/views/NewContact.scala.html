@@ -1,4 +1,5 @@
-@(contactForm: Form[views.formdata.ContactFormData])
+@(contactForm: Form[views.formdata.ContactFormData],
+        telephoneTypeMap : Map[String, Boolean])
 
 @import helper._
 @import bootstrap3._
@@ -24,6 +25,11 @@
       @text(contactForm("telephone"),
             label = "Digits",
             placeholder = "789-789-7896",
+            help = "")
+      @bootstrap3.select(contactForm("telephoneType"),
+            label = "telephoneType",
+            optionMap = telephoneTypeMap ,
+            isMultiple = false,
             help = "")
 
       <div class="form-group">

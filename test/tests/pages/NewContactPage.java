@@ -4,6 +4,7 @@ import org.fluentlenium.core.FluentPage;
 import org.openqa.selenium.WebDriver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fluentlenium.core.filter.FilterConstructor.withId;
 
 /**
  * Provides testing support for the New Contact page.
@@ -36,11 +37,13 @@ public class NewContactPage extends FluentPage {
    * @param firstName the first name.
    * @param lastName the last name.
    * @param telephone the telephone number.
+   * @param telephoneType the telephone type.
    */
-  public void createContact(String firstName, String lastName, String telephone) {
+  public void createContact(String firstName, String lastName, String telephone, String telephoneType) {
     fill("#firstName").with(firstName);
     fill("#lastName").with(lastName);
     fill("#telephone").with(telephone);
+    find("select", withId("telephoneType")).find("option", withId(telephoneType)).click();
     submit("#submit");
   }
 }
