@@ -21,7 +21,7 @@ public class DietTypes {
     return typeMap;
   }
   /**
-   * Checks for acceptable telephone type and sets to true if selected.
+   * Checks for acceptable diet type and sets to true if selected.
    * @param type the diet type list.
    * @return the map of selected diet types.
    */
