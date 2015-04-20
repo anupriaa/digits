@@ -10,8 +10,8 @@ public class Contact {
   private String lastName;
   private String telephone;
   private long id;
-  private String telephoneType;
-  private ArrayList<String> dietTypes;
+  private TelephoneType telephoneType;
+  private ArrayList<DietType> dietTypes;
 
   /**
    * Creates an instance of Contact.
@@ -23,7 +23,7 @@ public class Contact {
    * @param dietTypes the diet type.
    */
   public Contact(long id, String firstName, String lastName, String telephone,
-                 String telephoneType, ArrayList<String> dietTypes) {
+                 TelephoneType telephoneType, ArrayList<DietType> dietTypes) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
@@ -67,7 +67,7 @@ public class Contact {
    * Returns the telephone type.
    * @return the telephone type.
    */
-  public String getTelephoneType() {
+  public TelephoneType getTelephoneType() {
     return telephoneType;
   }
 
@@ -75,7 +75,78 @@ public class Contact {
    * Returns the diet type.
    * @return the list of diet types.
    */
-  public ArrayList<String> getDietTypes() {
+  public ArrayList<DietType> getDietTypes() {
     return dietTypes;
+  }
+
+  /**
+   * gets the diet type strings.
+   * @return the concatinated diet type string.
+   */
+  public String getDietTypesString() {
+    String diets = "";
+    for (DietType diet : dietTypes) {
+      diets += diet.getDietType() + ",";
+    }
+    return diets.substring(0, (diets.length() == 0 ? 0 : (diets.length() - 1)));
+  }
+
+  /**
+   * Sets the first name.
+   * @param firstName the first name.
+   */
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  /**
+   * Sets the last name.
+   * @param lastName the last name.
+   */
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  /**
+   * Sets the the telephone number.
+   * @param telephone the telephone number.
+   */
+  public void setTelephone(String telephone) {
+    this.telephone = telephone;
+  }
+
+  /**
+   * sets the id.
+   * @param id the id
+   */
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  /**
+   * sets the telephone types.
+   * @param telephoneType the telephone type.
+   */
+  public void setTelephoneType(TelephoneType telephoneType) {
+    this.telephoneType = telephoneType;
+  }
+
+  /**
+   * Sets diet types.
+   * @param dietTypes list of diet types.
+   */
+  public void setDietTypes(ArrayList<DietType> dietTypes) {
+    this.dietTypes = dietTypes;
+  }
+  /**
+   * Returns a list of diet types for this string.
+   * @return the list of diet type strings.
+   */
+  public ArrayList<String> getDietTypeList() {
+    ArrayList<String> dietList = new ArrayList<>();
+    for (DietType dietType : this.dietTypes) {
+      dietList.add(dietType.getDietType());
+    }
+    return dietList;
   }
 }
