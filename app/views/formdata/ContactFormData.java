@@ -22,6 +22,8 @@ public class ContactFormData {
   public long id;
   /** String to hold telephone type. */
   public String telephoneType = "";
+  /** String to hold diet types. */
+  public ArrayList<String> dietTypes = new ArrayList<String>();
 
   /**
    * No-arg constructor required by play.
@@ -40,6 +42,7 @@ public class ContactFormData {
     this.telephone = contact.getTelephone();
     this.id = contact.getId();
     this.telephoneType = contact.getTelephoneType();
+    this.dietTypes = contact.getDietTypes();
   }
 
   /**
@@ -48,13 +51,16 @@ public class ContactFormData {
    * @param lastName the last name.
    * @param telephone the telephone number.
    * @param telephoneType the telephone type.
+   * @param dietTypes the diet type.
    */
 
-  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType) {
+  public ContactFormData(String firstName, String lastName, String telephone,
+                         String telephoneType, ArrayList<String> dietTypes) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
     this.telephoneType = telephoneType;
+    this.dietTypes = dietTypes;
   }
 
   /**
@@ -79,6 +85,9 @@ public class ContactFormData {
     }
     if (!TelephoneTypes.isType(telephoneType)) {
       errors.add(new ValidationError("telephoneType", "Telephone type is invalid."));
+    }
+    if (dietTypes.size() > 5) {
+      errors.add(new ValidationError("dietTypes", "Diet type is invalid."));
     }
     return errors.isEmpty() ? null : errors;
   }

@@ -9,6 +9,7 @@
         <th>Last</th>
         <th>Phone</th>
         <th>Type</th>
+        <th>Diet</th>
       </tr>
       @for(contact <- contact) {
         <tr>
@@ -16,6 +17,7 @@
           <td>@contact.getLastName()</td>
           <td>@contact.getTelephone()</td>
           <td>@contact.getTelephoneType()</td>
+          <td>@contact.getDietTypes().mkString(",")</td>
           <td><a href="@routes.Application.newContact(contact.getId)">Edit</a> </td>
         </tr>
       }
