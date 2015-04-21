@@ -4,6 +4,7 @@ import views.formdata.ContactFormData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,33 +12,24 @@ import java.util.Map;
  */
 public class ContactDB {
 
-  private static Map<Long, Contact> contacts = new HashMap<>();
+  /*private static Map<Long, Contact> contacts = new HashMap<>();
   private static Map<String, TelephoneType> telephoneTypes = new HashMap<>();
   private static Map<String, DietType> dietTypes = new HashMap<>();
-  private static long currentId = 1;
+  private static long currentId = 1;*/
 
   /**
    * Creates a Contact instance and adds it to an internal data structure.
    * @param formData the form data.
    */
   public static void addContact(ContactFormData formData) {
-    long idVal = (formData.id == 0) ? currentId++ : formData.id;
     TelephoneType telephoneType = getTelephoneType(formData.telephoneType);
     ArrayList<DietType> dietTypes = new ArrayList<>();
     for (String dietString : formData.dietTypes) {
       dietTypes.add(getDietType(dietString));
     }
-    Contact contact = new Contact(idVal, formData.firstName,
+    Contact contact = new Contact(formData.firstName,
                                   formData.lastName, formData.telephone, telephoneType, dietTypes);
-    contacts.put(idVal, contact);
-  }
-
-  /**
-   * Updates db with new telephone type.
-   * @param telephoneType the telephone type to be added.
-   */
-  public  static void addTelephoneType(TelephoneType telephoneType) {
-    telephoneTypes.put(telephoneType.getTelephoneType(), telephoneType);
+    contact.save();
   }
 
   /**
@@ -46,11 +38,20 @@ public class ContactDB {
    * @return the telephone type instance if found.
    */
   public static TelephoneType getTelephoneType(String typeString) {
-    TelephoneType telephoneType = telephoneTypes.get(typeString);
+    TelephoneType telephoneType = TelephoneType.find().where().eq("TelephoneType", typeString).findUnique();
     if (telephoneType == null) {
       throw new RuntimeException("Illegal telephone type" + typeString);
     }
     return telephoneType;
+  }
+
+  /**
+   * Updates db with new telephone type.
+   * @param telephoneType the telephone type to be added.
+   */
+  public static void addTelephoneType(TelephoneType telephoneType) {
+    telephoneType.save();
+
   }
 
   /**
@@ -59,7 +60,8 @@ public class ContactDB {
    * @return the diet type instance if found.
    */
   public static DietType getDietType(String typeString) {
-    DietType dietType = dietTypes.get(typeString);
+
+    DietType dietType = DietType.find().where().eq("DietType", typeString).findUnique();
     if (dietType == null) {
       throw new RuntimeException("Illegal diet type" + typeString);
     }
@@ -71,7 +73,7 @@ public class ContactDB {
    * @param dietType the diet type to be added.
    */
   public  static void addDietType(DietType dietType) {
-    dietTypes.put(dietType.getDietType(), dietType);
+    dietType.save();
   }
 
   /**
@@ -80,7 +82,7 @@ public class ContactDB {
    * @return The contact.
    */
   public static Contact getContact(long id) {
-    Contact contact = contacts.get(id);
+    Contact contact = Contact.find().byId(id);
     if (contact == null) {
       throw new RuntimeException("Could not find the associated contact with the id.");
     }
@@ -91,7 +93,7 @@ public class ContactDB {
    * @return the contact list.
    */
   public  static ArrayList<Contact> getContacts() {
-    return new ArrayList<>(contacts.values());
+    return new ArrayList<>(Contact.find().all());
   }
 
 }
